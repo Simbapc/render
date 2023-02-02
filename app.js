@@ -52,4 +52,22 @@ app.get("/api/notes", (req, res) => {
   res.json(notes);
 });
 
+app.get("/api/notes/:id", (req, res) => {
+  const id = Number(req.params.id);
+  console.log(id);
+  const note = notes.find((note) => note.id === id);
+
+  if (note) {
+    res.json(note);
+  } else {
+    res.status(404).end();
+  }
+});
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: "unknown endpoint" });
+};
+
+app.use(unknownEndpoint);
+
 app.listen(port, () => console.log(`Server running on port ${port}!`));
