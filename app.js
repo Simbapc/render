@@ -7,13 +7,13 @@ const port = process.env.PORT || 3001;
 
 app.use(express.json());
 
-app.use(
-  morgan(":method :url :status :response-time ms - :res[content-length]")
-);
+// app.use(
+//   morgan(":method :url :status :response-time ms - :res[content-length]")
+// );
 
 app.use(cors());
 
-// app.use(express.static("build"));
+app.use(express.static("build"));
 
 let notes = [
   {
@@ -41,7 +41,7 @@ let notes = [
     id: 4,
   },
   {
-    content: "xinbo",
+    content: "xinbooooo",
     date: "2023-01-14T11:44:48.357Z",
     important: true,
     id: 5,
