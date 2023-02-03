@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 var morgan = require("morgan");
+const cors = require("cors");
 
 const port = process.env.PORT || 3001;
 
@@ -10,7 +11,9 @@ app.use(
   morgan(":method :url :status :response-time ms - :res[content-length]")
 );
 
-app.use(express.static("build"));
+app.use(cors());
+
+// app.use(express.static("build"));
 
 let notes = [
   {
